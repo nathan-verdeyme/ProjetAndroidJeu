@@ -9,13 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="com.example.projectjeu.ui.home.HomeFragment"
         android:label="@string/title_deck"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_deck" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.projectjeu.ui.dashboard.DashboardFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"
