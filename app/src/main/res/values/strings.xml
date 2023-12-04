@@ -3,4 +3,7 @@
     <string name="title_deck">Deck</string>
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
+    <string name="deck_item">Deck Item</string>
+    <string name="detail_1">Detail 1</string>
+    <string name="detail_2">Detail 2</string>
 </resources>
