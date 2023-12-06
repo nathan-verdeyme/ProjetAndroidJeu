@@ -52,28 +52,45 @@
         android:text="User"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="229dp"
-        android:layout_height="153dp"
-        android:backgroundTint="#FF9800"
-        android:text="DECK"
-        android:textSize="34sp"
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="646dp" />
 
+
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="247dp"
+        android:layout_height="161dp"
+        android:backgroundTint="#FF9800"
+        android:radius="0dp"
+        android:text="DECK"
+        android:textSize="34sp"
+        android:typeface="monospace"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="648dp" />
+
     <Button
         android:id="@+id/button2"
-        android:layout_width="234dp"
-        android:layout_height="153dp"
+        android:layout_width="247dp"
+        android:layout_height="155dp"
         android:backgroundTint="#F44336"
+        android:radius="0dp"
         android:text="COMBATTRE"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="34sp"
-        app:strokeColor="#0B0A0A"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="646dp" />
+        android:typeface="monospace"
+        tools:layout_editor_absoluteX="227dp"
+        tools:layout_editor_absoluteY="648dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
