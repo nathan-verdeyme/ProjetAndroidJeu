@@ -31,9 +31,11 @@
         android:id="@+id/imageView6"
         android:layout_width="445dp"
         android:layout_height="1011dp"
+        android:layout_marginBottom="100dp"
         android:src="@drawable/_6000346f_f50c_4b10_88ba_80f56348033d_2"
-        tools:layout_editor_absoluteX="-8dp"
-        tools:layout_editor_absoluteY="-237dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-8dp" />
 
     <TextView
         android:id="@+id/textView2"
