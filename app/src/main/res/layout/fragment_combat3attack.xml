@@ -7,87 +7,33 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8E0000"
         android:backgroundTint="#3C7AAC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.home.HomeFragment">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="163dp"
-            android:layout_height="125dp"
-            android:backgroundTint="#F44336"
-            android:text="ATTAQUE1"
-            android:textSize="24sp"
-            app:iconTint="#FF0000"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="465dp" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="163dp"
-            android:layout_height="125dp"
-            android:backgroundTint="#F44336"
-            android:text="ATTAQUE2"
-            android:textSize="24sp"
-            app:iconTint="#FF0000"
-            tools:layout_editor_absoluteX="231dp"
-            tools:layout_editor_absoluteY="465dp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="314dp"
-            android:layout_height="192dp"
-            android:src="@drawable/d5ynr9c_33aeebd0_1cd8_45d9_86fc_8431aa114534"
-            tools:layout_editor_absoluteY="675dp" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/barenbas"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Niveau"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="170dp"
-            android:text="User"
-            app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="414dp"
             android:layout_height="59dp"
+            android:layout_marginTop="1dp"
             android:background="#D30000"
             android:backgroundTint="#AFABAB"
             android:text="Combat opposant x et y !                                  Que le meilleur gagne !"
@@ -97,28 +43,51 @@
             android:textIsSelectable="false"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="305dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="417dp"
             android:layout_height="237dp"
+            android:layout_marginTop="69dp"
             android:src="@drawable/e9e38eywqayw_5q"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="69dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_attack2"
+            android:layout_width="163dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="98dp"
+            android:layout_marginEnd="28dp"
+            android:backgroundTint="#F44336"
+            android:text="ATTAQUE2"
+            android:textSize="24sp"
+            app:iconTint="#FF0000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_attack1"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Button
+            android:id="@+id/button_attack1"
+            android:layout_width="163dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="98dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#F44336"
+            android:text="ATTAQUE1"
+            android:textSize="24sp"
+            app:iconTint="#FF0000"
+            app:layout_constraintEnd_toStartOf="@+id/button_attack2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
