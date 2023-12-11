@@ -28,7 +28,7 @@ public class HomeFragment extends AppCompatActivity {
         });
 
         Button combat = findViewById(R.id.buttonCombat);
-        deck.setOnClickListener(new View.OnClickListener() {
+        combat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeFragment.this, combatFragment.class);

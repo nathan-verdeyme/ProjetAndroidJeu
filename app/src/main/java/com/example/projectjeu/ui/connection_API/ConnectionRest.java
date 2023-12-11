@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.projectjeu.ui.deck.Deck;
 import com.example.projectjeu.ui.login.Param;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
     private final static String URL = "https://api.munier.me/jwt/";
     private JSONObject jsonObj = null;
 
-    private String action = "login";
+    private String action = "Combattant";
 
     @Override
     protected String doInBackground(String... strings) {
@@ -91,19 +92,19 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
         return response.toString();
     }
 
-   /* public ArrayList<Car> parse(final String json) {
+   public ArrayList<Deck> parse(final String json) {
         try {
-            final ArrayList<Car> cars = new ArrayList<>();
+            final ArrayList<Deck> Combattants = new ArrayList<>();
             final JSONArray jProductArray = new JSONArray(json);
             for (int i = 0; i < jProductArray.length(); i++) {
-                cars.add(new Car(jProductArray.optJSONObject(i)));
+                Combattants.add(new Deck(jProductArray.optJSONObject(i)));
             }
-            return cars;
+            return Combattants;
         } catch (JSONException e) {
             Log.v("TAG","[JSONException] e : " + e.getMessage());
         }
         return null;
-    }*/
+    }
 
     public void setObj(JSONObject jsonObj){
         this.jsonObj = jsonObj;

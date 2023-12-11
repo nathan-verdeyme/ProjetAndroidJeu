@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="detailId" type="id" />
+    <item name="detailPointDeVie" type="id" />
+    <item name="detailAttaqueDisponible" type="id" />
+</resources>

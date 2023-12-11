@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.projectjeu.R;
 
 import java.util.ArrayList;
 
 public class CombattantListAdapter extends BaseAdapter {
-
     private ArrayList<Deck> listData;
     private LayoutInflater layoutInflater;
     private Context context;
@@ -28,7 +26,7 @@ public class CombattantListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.fragment_deck, null);
+            convertView = layoutInflater.inflate(R.layout.fragment_deck_detail, null);
             holder = new ViewHolder();
             holder.name = convertView.findViewById(R.id.detailName);
             holder.avatar = convertView.findViewById(R.id.detailAvatar);
@@ -38,27 +36,31 @@ public class CombattantListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        Deck deck = this.listData.get(position);
+        holder.name.setText(deck.getName());
+        if (deck.getAvatar() != null && deck.getAvatar().getDrawable() != null) {
+            holder.avatar.setImageDrawable(deck.getAvatar().getDrawable());
+        }
+        holder.niveau.setText(String.valueOf(deck.getNiveau()));
+
         if (position % 2 == 0) {
             convertView.setBackgroundColor(Color.rgb(150, 245, 170));
+        } else {
+            // Définir une autre couleur ou laisser transparent
+            convertView.setBackgroundColor(Color.TRANSPARENT);
         }
 
-        Deck deck = this.listData.get(position);
-        holder.id.setText(String.valueOf(deck.getId()));
-        holder.name.setText(deck.getName());
-        holder.avatar.setImageResource(deck.getAvatarId());
-        holder.niveau.setText(String.valueOf(deck.getNiveau()));
         return convertView;
     }
 
     static class ViewHolder {
-        TextView id;
         TextView name;
         ImageView avatar;
         TextView niveau;
     }
 
     public int getCount() {
-        return (listData != null) ? listData.size() : 0;
+        return listData.size();
     }
 
     public Object getItem(int position) {

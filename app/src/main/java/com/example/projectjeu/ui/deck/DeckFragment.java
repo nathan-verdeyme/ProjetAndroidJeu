@@ -1,15 +1,18 @@
 package com.example.projectjeu.ui.deck;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projectjeu.ConnectionRest;
 import com.example.projectjeu.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.projectjeu.ui.connection_API.ConnectionRest;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -21,7 +24,7 @@ public class DeckFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_deck);
 
         ArrayList<Deck> listData = getListData();
-        final ListView listView = findViewById(R.id.listView);
+        final ListView listView = findViewById(R.id.ListView);
         listView.setAdapter(new CombattantListAdapter(this, listData));
 
         // When the user clicks on the ListItem
@@ -34,7 +37,10 @@ public class DeckFragment extends AppCompatActivity {
                 Intent intent = new Intent(DeckFragment.this, DeckDetailActivity.class);
                 intent.putExtra("id", deck.getId());
                 intent.putExtra("name", deck.getName());
-                intent.putExtra("avatar", deck.getAvatarId()); // Assuming getAvatarResourceId() returns resource ID
+                String base64Avatar = String.valueOf(deck.getAvatar());
+                byte[] decodedString = Base64.decode(base64Avatar, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                intent.putExtra("avatar", decodedByte);
                 intent.putExtra("niveau", deck.getNiveau());
                 startActivity(intent);
             }

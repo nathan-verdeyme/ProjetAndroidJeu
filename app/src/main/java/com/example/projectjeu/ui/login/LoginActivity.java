@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.projectjeu.MainActivity;
 import com.example.projectjeu.R;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import com.example.projectjeu.ui.home.HomeFragment;
@@ -34,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         userPassword = (EditText)findViewById(R.id.user_password);
         buttonLogin = (Button)findViewById(R.id.button_login);
 
-        userEmail.setText("nabil.kerkoub@esme.fr");
-        userPassword.setText("qetMap-rygvuw-0sudhu");
+        userEmail.setText("nathan.verdeyme@esme.fr");
+        userPassword.setText("Nathanver22");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
