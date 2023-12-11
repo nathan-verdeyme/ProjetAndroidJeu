@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class ConnectionRest extends AsyncTask<String, Void, String> {
-    private final static String URL = "https://api.libreapps.org/jwt/";
+    private final static String URL = "https://api.munier.me/jwt/";
     private JSONObject jsonObj = null;
 
     private String action = "login";
