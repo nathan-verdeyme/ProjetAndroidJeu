@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.projectjeu.MainActivity;
 import com.example.projectjeu.R;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
+import com.example.projectjeu.ui.home.HomeFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.v("LoginActivity", token);
                     }else{
                         Param.getInstance().setToken(token);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeFragment.class);
                         startActivity(intent);
                     }
                 } catch (JSONException e) {

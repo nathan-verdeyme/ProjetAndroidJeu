@@ -19,6 +19,7 @@
         android:id="@+id/imageView6"
         android:layout_width="445dp"
         android:layout_height="1011dp"
+        android:layout_marginStart="22dp"
         android:src="@drawable/_6000346f_f50c_4b10_88ba_80f56348033d_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
         app:layout_constraintVertical_bias="0.803" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonDeck"
         android:layout_width="205dp"
         android:layout_height="143dp"
         android:layout_marginTop="536dp"
@@ -37,12 +38,12 @@
         android:textSize="24sp"
         android:typeface="monospace"
         app:layout_constraintBottom_toTopOf="@+id/barenbas"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCombat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonCombat"
         android:layout_width="206dp"
         android:layout_height="144dp"
         android:backgroundTint="#F44336"
@@ -53,7 +54,7 @@
         android:typeface="monospace"
         app:layout_constraintBottom_toTopOf="@+id/barenbas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button1"
+        app:layout_constraintStart_toEndOf="@+id/buttonDeck"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
