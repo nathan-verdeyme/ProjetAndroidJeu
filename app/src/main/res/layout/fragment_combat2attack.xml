@@ -7,7 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_attack"
         android:layout_width="163dp"
         android:layout_height="125dp"
         android:backgroundTint="#F44336"
@@ -91,7 +91,7 @@
             tools:layout_editor_absoluteY="60dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_attack"
             android:layout_width="163dp"
             android:layout_height="125dp"
             android:backgroundTint="#F44336"
