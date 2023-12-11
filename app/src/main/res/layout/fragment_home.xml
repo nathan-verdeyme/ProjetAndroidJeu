@@ -6,56 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/barenbas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="445dp"
-        android:layout_height="1011dp"
+        android:layout_width="464dp"
+        android:layout_height="1001dp"
         android:layout_marginStart="22dp"
         android:src="@drawable/_6000346f_f50c_4b10_88ba_80f56348033d_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.788" />
 
     <Button
         android:id="@+id/buttonDeck"
-        android:layout_width="205dp"
-        android:layout_height="143dp"
-        android:layout_marginTop="536dp"
+        android:layout_width="229dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="572dp"
         android:backgroundTint="#FF9800"
         android:radius="0dp"
         android:text="DECK"
         android:textSize="24sp"
         android:typeface="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/barenbas"
         app:layout_constraintEnd_toStartOf="@+id/buttonCombat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonCombat"
-        android:layout_width="206dp"
-        android:layout_height="144dp"
+        android:layout_width="223dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="572dp"
         android:backgroundTint="#F44336"
         android:radius="0dp"
         android:text="COMBATTRE"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
         android:typeface="monospace"
-        app:layout_constraintBottom_toTopOf="@+id/barenbas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonDeck"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

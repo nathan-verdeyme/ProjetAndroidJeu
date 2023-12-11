@@ -13,35 +13,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@drawable/image222" />
 
     <EditText
         android:id="@+id/user_email"
-        android:layout_width="223dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="E-Mail"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
-
-    <EditText
-        android:id="@+id/user_password"
         android:layout_width="225dp"
         android:layout_height="54dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <EditText
+        android:id="@+id/user_password"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="Mot de passe"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.38" />
+
+    <EditText
+        android:id="@+id/user_pseudo"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="Pseudo"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.226" />
 
     <Button
         android:id="@+id/button_1"
@@ -49,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:backgroundTint="#B54949"
-        android:text="CONNECTION"
+        android:text="VALIDER"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -63,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:backgroundTint="#B54949"
-        android:text="INSCRIPTION"
+        android:text="RETOUR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
