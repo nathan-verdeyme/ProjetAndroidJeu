@@ -11,11 +11,20 @@
         android:layout_height="match_parent"
         android:background="#8E0000"
         android:backgroundTint="#1F737E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ui.home.HomeFragment">
+        tools:context=".ui.home.HomeFragment"
+        tools:layout_editor_absoluteX="-43dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.google.android.material.appbar.AppBarLayout>
 
 
         <Button
@@ -61,9 +70,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="462dp"
-            android:layout_height="283dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="559dp"
+            android:layout_height="304dp"
+            android:layout_marginTop="24dp"
             android:src="@drawable/b84a3d9fe9aafdae5b370d50ed3a5779"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.509"
