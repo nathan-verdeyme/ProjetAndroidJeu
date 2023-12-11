@@ -1,58 +1,59 @@
 package com.example.projectjeu.ui.deck;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.projectjeu.ConnectionRest;
 import com.example.projectjeu.R;
-import com.example.projectjeu.databinding.FragmentDeckBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
-import java.util.List;
-
-public class DeckFragment extends Fragment {
-
-    private FragmentDeckBinding binding;
-    private DeckViewModel deckViewModel;
-    private DeckAdapter deckAdapter;
+public class DeckFragment extends AppCompatActivity {
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentDeckBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_deck);
 
-        deckViewModel = new ViewModelProvider(this).get(DeckViewModel.class);
+        ArrayList<Deck> listData = getListData();
+        final ListView listView = findViewById(R.id.listView);
+        listView.setAdapter(new CombattantListAdapter(this, listData));
 
-        RecyclerView recyclerView = root.findViewById(R.id.deckList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-        // Initialize the DeckAdapter with an empty list initially
-        deckAdapter = new DeckAdapter();
-        recyclerView.setAdapter(deckAdapter);
-
-        // Observe changes to the deck items in the ViewModel
-        deckViewModel.getDeckItems().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+        // When the user clicks on the ListItem
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onChanged(List<String> deckItems) {
-                // Update the RecyclerView adapter with the new deck items
-                deckAdapter.submitList(deckItems);
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                Object o = listView.getItemAtPosition(position);
+                Deck deck = (Deck) o;
+
+                Intent intent = new Intent(DeckFragment.this, DeckDetailActivity.class);
+                intent.putExtra("id", deck.getId());
+                intent.putExtra("name", deck.getName());
+                intent.putExtra("avatar", deck.getAvatarId()); // Assuming getAvatarResourceId() returns resource ID
+                intent.putExtra("niveau", deck.getNiveau());
+                startActivity(intent);
             }
         });
-
-        return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    private ArrayList<Deck> getListData() {
+        try {
+            // Assuming you have a method for fetching and parsing JSON data in ConnectionRest
+            ConnectionRest connectionRest = new ConnectionRest();
+            connectionRest.execute("GET");
+            String listJsonObjs = connectionRest.get();
+
+            if (listJsonObjs != null) {
+                return connectionRest.parse(listJsonObjs);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

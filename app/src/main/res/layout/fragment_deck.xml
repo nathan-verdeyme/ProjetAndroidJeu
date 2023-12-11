@@ -6,62 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.deck.DeckFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </com.google.android.material.appbar.AppBarLayout>
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="246dp"
+        android:layout_height="212dp"
+        android:src="@drawable/azerty"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="517dp" />
 
     <LinearLayout
-        android:id="@+id/buttonLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
+        android:layout_width="458dp"
+        android:layout_height="372dp"
+        android:background="#232222"
+        android:backgroundTint="#785C5C"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Left Aligned Button -->
-        <Button
-            android:id="@+id/leftButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Combattant"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <!-- Right Aligned Button -->
-        <Button
-            android:id="@+id/rightButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item"
-            android:layout_marginEnd="16dp" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/deckList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+        tools:layout_editor_absoluteX="-29dp"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
