@@ -29,15 +29,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Left Aligned Button -->
+
+        <!-- Right Aligned Button -->
+
         <Button
             android:id="@+id/leftButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Combattant"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            android:text="Combattant" />
 
-        <!-- Right Aligned Button -->
         <Button
             android:id="@+id/rightButton"
             android:layout_width="wrap_content"
