@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.deck.DeckFragment">
+    tools:context=".ui.deck.DeckActivity">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -26,7 +26,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -40,10 +39,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Left Aligned Button -->
-
-        <!-- Right Aligned Button -->
 
         <Button
             android:id="@+id/Home"
@@ -59,10 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Combattant" />
-
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/ListView"
         android:layout_width="345dp"
         android:layout_height="210dp"
@@ -71,5 +65,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLayout"
         app:layout_constraintVertical_bias="0.478" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

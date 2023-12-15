@@ -14,27 +14,30 @@ public class DeckDetailActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_deck_detail);
 
         // Retrieve data from intent
-        int id = getIntent().getIntExtra("id", 0);
         String name = getIntent().getStringExtra("name");
+        String avatar = getIntent().getStringExtra("avatar");
         int niveau = getIntent().getIntExtra("niveau", 0);
-        int pointDeVie = getIntent().getIntExtra("pointDeVie", 0);
-        int attaqueDisponible = getIntent().getIntExtra("attaqueDisponible", 0);
+        int pointDeVie = getIntent().getIntExtra("pointDeVie",0);
+        String attaqueDisponible = getIntent().getStringExtra("attaque");
 
-        // Display data in TextViews
-        //TextView idTextView = findViewById(R.id.detailId);
+
+
         TextView nameTextView = findViewById(R.id.detailName);
         TextView niveauTextView = findViewById(R.id.detailNiveau);
-        //TextView pointDeVieTextView = findViewById(R.id.detailPointDeVie);
-        //TextView attaqueDisponibleTextView = findViewById(R.id.detailAttaqueDisponible);
+        TextView pointDeVieTextView = findViewById(R.id.detailPointDeVie);
+        TextView attaqueDisponibleTextView = findViewById(R.id.detailAttaque);
 
-        //idTextView.setText(String.valueOf(id));
         nameTextView.setText(name);
         niveauTextView.setText(String.valueOf(niveau));
-        //pointDeVieTextView.setText(String.valueOf(pointDeVie));
-        //attaqueDisponibleTextView.setText(String.valueOf(attaqueDisponible));
+        pointDeVieTextView.setText(String.valueOf(pointDeVie));
+        attaqueDisponibleTextView.setText(String.valueOf(attaqueDisponible));
 
-        // Set avatar image
-        ImageView avatarImageView = findViewById(R.id.detailAvatar);
-        avatarImageView.setImageResource(getIntent().getIntExtra("avatar", R.mipmap.ic_launcher));
-    }
+
+        int resId = getResources().getIdentifier(avatar, "drawable", getPackageName());
+        ImageView avatarImage = findViewById(R.id.detailAvatar);
+        if (resId != 0 && avatarImage != null) {
+            avatarImage.setImageResource(resId);
+        } else {
+            avatarImage.setImageResource(R.mipmap.ic_launcher);
+        }}
 }

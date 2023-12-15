@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectjeu.R;
 import com.example.projectjeu.ui.combat.combatFragment;
-import com.example.projectjeu.ui.deck.DeckFragment;
+import com.example.projectjeu.ui.deck.DeckActivity;
 
-public class HomeFragment extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class HomeFragment extends AppCompatActivity {
         deck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeFragment.this, DeckFragment.class);
+                Intent intent = new Intent(HomeActivity.this, DeckActivity.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class HomeFragment extends AppCompatActivity {
         combat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeFragment.this, combatFragment.class);
+                Intent intent = new Intent(HomeActivity.this, combatFragment.class);
                 startActivity(intent);
             }
         });

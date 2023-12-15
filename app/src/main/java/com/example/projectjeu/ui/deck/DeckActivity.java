@@ -1,10 +1,7 @@
 package com.example.projectjeu.ui.deck;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,7 +13,7 @@ import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class DeckFragment extends AppCompatActivity {
+public class DeckActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +31,13 @@ public class DeckFragment extends AppCompatActivity {
                 Object o = listView.getItemAtPosition(position);
                 Deck deck = (Deck) o;
 
-                Intent intent = new Intent(DeckFragment.this, DeckDetailActivity.class);
+                Intent intent = new Intent(DeckActivity.this, DeckDetailActivity.class);
                 intent.putExtra("id", deck.getId());
                 intent.putExtra("name", deck.getName());
-                String base64Avatar = String.valueOf(deck.getAvatar());
-                byte[] decodedString = Base64.decode(base64Avatar, Base64.DEFAULT);
-                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                intent.putExtra("avatar", decodedByte);
+                intent.putExtra("avatar", deck.getAvatar());
                 intent.putExtra("niveau", deck.getNiveau());
+                intent.putExtra("attaque",deck.getAttaque());
+                intent.putExtra("pointDeVie",deck.getPointDeVie());
                 startActivity(intent);
             }
         });

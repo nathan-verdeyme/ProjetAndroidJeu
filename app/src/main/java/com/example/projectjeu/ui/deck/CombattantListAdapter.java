@@ -1,7 +1,10 @@
 package com.example.projectjeu.ui.deck;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +29,11 @@ public class CombattantListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.fragment_deck_detail, null);
+            convertView = layoutInflater.inflate(R.layout.list_item_deck, parent, false);
             holder = new ViewHolder();
-            holder.name = convertView.findViewById(R.id.detailName);
-            holder.avatar = convertView.findViewById(R.id.detailAvatar);
-            holder.niveau = convertView.findViewById(R.id.detailNiveau);
+            holder.name = convertView.findViewById(R.id.nameTextView);
+            holder.avatar = convertView.findViewById(R.id.avatarImageView);
+            holder.niveau = convertView.findViewById(R.id.niveauTextView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -38,10 +41,16 @@ public class CombattantListAdapter extends BaseAdapter {
 
         Deck deck = this.listData.get(position);
         holder.name.setText(deck.getName());
-        if (deck.getAvatar() != null && deck.getAvatar().getDrawable() != null) {
-            holder.avatar.setImageDrawable(deck.getAvatar().getDrawable());
-        }
         holder.niveau.setText(String.valueOf(deck.getNiveau()));
+
+        String avatarName = deck.getAvatar(); // Assurez-vous que ceci renvoie le nom de la ressource
+        int resId = context.getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
+        if (resId != 0) {
+            holder.avatar.setImageResource(resId);
+        } else {
+            holder.avatar.setImageResource(R.drawable.avatar1); // Image par défaut
+        }
+
 
         if (position % 2 == 0) {
             convertView.setBackgroundColor(Color.rgb(150, 245, 170));

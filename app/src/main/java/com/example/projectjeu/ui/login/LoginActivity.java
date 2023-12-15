@@ -13,7 +13,7 @@ import android.view.View;
 
 import com.example.projectjeu.R;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
-import com.example.projectjeu.ui.home.HomeFragment;
+import com.example.projectjeu.ui.home.HomeActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         userPassword = (EditText)findViewById(R.id.user_password);
         buttonLogin = (Button)findViewById(R.id.button_1);
 
-        userEmail.setText("nabil.kerkoub@esme.fr");
-        userPassword.setText("qetMap-rygvuw-0sudhu");
+        userEmail.setText("nathanverdeyme@hotmail.fr");
+        userPassword.setText("Nathanver22");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.v("LoginActivity", token);
                     }else{
                         Param.getInstance().setToken(token);
-                        Intent intent = new Intent(LoginActivity.this, HomeFragment.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 } catch (JSONException e) {

@@ -13,24 +13,24 @@ import android.util.Base64;
 public class Deck {
     private final int id;
     private final String name;
-    private final ImageView avatar;
+    private final String avatar;
     private final int niveau;
-
+    private final String attaque;
+    private final int pointDeVie;
     public Deck(JSONObject jObject) {
         this.id = jObject.optInt("id");
         this.name = jObject.optString("name");
-        String avatarBase64 = jObject.optString("avatar");
-        byte[] imageBytes = Base64.decode(avatarBase64, Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        this.avatar = new ImageView(null);
-        this.avatar.setImageBitmap(decodedImage);
-
+        this.avatar = jObject.optString("avatar");
         this.niveau = jObject.optInt("niveau");
+        this.attaque = jObject.optString("attaque");
+        this.pointDeVie = jObject.optInt("pointDeVie");
+
     }
 
     public int getId() { return id; }
     public String getName() { return name; }
-    public ImageView getAvatar() { return avatar; }
-
+    public String getAvatar() { return avatar; }
     public int getNiveau() { return niveau; }
+    public String getAttaque() { return attaque; }
+    public  int getPointDeVie() { return  pointDeVie; }
 }

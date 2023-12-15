@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8E0000"
         android:backgroundTint="#1F737E"
-        tools:context=".ui.home.HomeFragment"
+        tools:context=".ui.home.HomeActivity"
         tools:layout_editor_absoluteX="-43dp"
         tools:layout_editor_absoluteY="0dp">
 

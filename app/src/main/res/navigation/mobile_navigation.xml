@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_deck"
-        android:name="com.example.projectjeu.ui.deck.DeckFragment"
+        android:name="com.example.projectjeu.ui.deck.DeckActivity"
         android:label="@string/title_deck"
         tools:layout="@layout/fragment_deck" />
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.projectjeu.ui.home.HomeFragment"
+        android:name="com.example.projectjeu.ui.home.HomeActivity"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
