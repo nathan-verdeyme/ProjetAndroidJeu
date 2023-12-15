@@ -22,6 +22,9 @@
             android:exported="false"/>
         <activity android:name=".ui.deck.DeckDetailActivity"
             android:exported="false"/>
+        <activity android:name=".ui.login.SignUp"
+            android:exported="false"/>
+
 
 
         <activity

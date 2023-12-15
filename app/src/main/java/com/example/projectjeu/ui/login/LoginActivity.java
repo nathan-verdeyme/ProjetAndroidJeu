@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.View;
+
 
 import com.example.projectjeu.R;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
@@ -33,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         userPassword = (EditText)findViewById(R.id.user_password);
         buttonLogin = (Button)findViewById(R.id.button_1);
 
-        userEmail.setText("nathan.verdeyme@esme.fr");
-        userPassword.setText("Nathanver22");
+        userEmail.setText("nabil.kerkoub@esme.fr");
+        userPassword.setText("qetMap-rygvuw-0sudhu");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,5 +71,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button button_2 = findViewById(R.id.button_2);
+        button_2.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignUp.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 }
