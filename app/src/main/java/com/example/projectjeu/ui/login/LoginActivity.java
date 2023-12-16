@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         userEmail.setText("nathanverdeyme@hotmail.fr");
         userPassword.setText("Nathanver22");
 
+
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUp.class);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });

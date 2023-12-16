@@ -43,7 +43,7 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
         String token = Param.getInstance().getToken();
         InputStream is = null;
         String parameters = "";
-        if(!methode.equals("POST")&&(jsonObj!=null)){
+        if(!methode.equals("POST")&&(jsonObj!=null)&&!methode.equals("CREATE_USER")){
             url += jsonObj.getInt("id");
         }
         if(jsonObj != null){
@@ -51,14 +51,20 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
                 jsonObj.remove("id");
             }
             parameters  = "data="+URLEncoder.encode(jsonObj.toString(), "utf-8");
+            //Log.v("URL", url+" "+parameters);
         }
 
+        if (methode.equals("CREATE_USER")) {
+            methode = "POST";
+            url = URL + "register.php";
+        }
         try {
             final HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setRequestMethod(methode);
-            if (token !=null){
-                conn.setRequestProperty("Authorization","Bearer "+URLEncoder.encode(token, "UTF-8"));
+            if (token != null) {
+                conn.setRequestProperty("Authorization", "Bearer " + URLEncoder.encode(token, "utf-8"));
             }
+
             // Pour les methode POST et PUT on envoie les parametre avec l'OutputStreamWriter
             if(methode.equals("POST")||methode.equals("PUT")){
                 conn.setDoInput(true);
