@@ -32,4 +32,11 @@
         android:id="@+id/detailAttaque"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/selectionner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sélectionner" />
+
 </LinearLayout>

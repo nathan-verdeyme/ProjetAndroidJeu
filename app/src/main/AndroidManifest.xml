@@ -24,6 +24,8 @@
             android:exported="false"/>
         <activity android:name=".ui.login.RegistrationActivity"
             android:exported="false"/>
+        <activity android:name=".ui.combat.combatActivity"
+            android:exported="false"/>
 
 
 

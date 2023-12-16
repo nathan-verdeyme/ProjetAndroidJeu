@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectjeu.R;
-import com.example.projectjeu.ui.combat.combatFragment;
+import com.example.projectjeu.ui.combat.combatActivity;
 import com.example.projectjeu.ui.deck.DeckActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         combat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, combatFragment.class);
+                Intent intent = new Intent(HomeActivity.this, combatActivity.class);
                 startActivity(intent);
             }
         });

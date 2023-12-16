@@ -1,6 +1,9 @@
 package com.example.projectjeu.ui.deck;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,14 +16,11 @@ public class DeckDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_deck_detail);
 
-        // Retrieve data from intent
         String name = getIntent().getStringExtra("name");
         String avatar = getIntent().getStringExtra("avatar");
         int niveau = getIntent().getIntExtra("niveau", 0);
         int pointDeVie = getIntent().getIntExtra("pointDeVie",0);
         String attaqueDisponible = getIntent().getStringExtra("attaque");
-
-
 
         TextView nameTextView = findViewById(R.id.detailName);
         TextView niveauTextView = findViewById(R.id.detailNiveau);
@@ -39,5 +39,18 @@ public class DeckDetailActivity extends AppCompatActivity {
             avatarImage.setImageResource(resId);
         } else {
             avatarImage.setImageResource(R.mipmap.ic_launcher);
-        }}
+        }
+
+        Button selectionner = findViewById(R.id.selectionner);
+        selectionner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("resultName", name);
+                resultIntent.putExtra("resultAvatar", resId);
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        });
+    }
 }
