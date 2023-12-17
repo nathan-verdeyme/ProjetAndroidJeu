@@ -28,9 +28,9 @@ public class DeckDetailActivity extends AppCompatActivity {
         TextView attaqueDisponibleTextView = findViewById(R.id.detailAttaque);
 
         nameTextView.setText(name);
-        niveauTextView.setText(String.valueOf(niveau));
-        pointDeVieTextView.setText(String.valueOf(pointDeVie));
-        attaqueDisponibleTextView.setText(String.valueOf(attaqueDisponible));
+        niveauTextView.setText("niveau : " + String.valueOf(niveau));
+        pointDeVieTextView.setText("Point de vie : " + String.valueOf(pointDeVie));
+        attaqueDisponibleTextView.setText("Attaque 1 : " + String.valueOf(attaqueDisponible));
 
 
         int resId = getResources().getIdentifier(avatar, "drawable", getPackageName());
