@@ -24,8 +24,8 @@ public class ItemDetailActivity extends AppCompatActivity{
         String name = getIntent().getStringExtra("name");
         String avatar = getIntent().getStringExtra("avatar");
         int quantite = getIntent().getIntExtra("quantite", 0);
-        String effet = getIntent().getStringExtra("effet");
-        String Description = getIntent().getStringExtra("description");
+        int effet = getIntent().getIntExtra("effet",0);
+        String description = getIntent().getStringExtra("description");
 
         TextView nameTextView = findViewById(R.id.detailName);
         TextView quantiteTextView = findViewById(R.id.detailQuantite);
@@ -35,7 +35,7 @@ public class ItemDetailActivity extends AppCompatActivity{
         nameTextView.setText(name);
         quantiteTextView.setText("Quantité : " + String.valueOf(quantite));
         effetTextView.setText("Effet: " + String.valueOf(effet));
-        descriptionTextView.setText("Description : " + String.valueOf(Description));
+        descriptionTextView.setText("Description : " + String.valueOf(description));
 
 
         int resId = getResources().getIdentifier(avatar, "drawable", getPackageName());
@@ -53,6 +53,9 @@ public class ItemDetailActivity extends AppCompatActivity{
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("resultName", name);
                 resultIntent.putExtra("resultAvatar", resId);
+                resultIntent.putExtra("resultEffet", effet);
+                resultIntent.putExtra("resultQuantite", quantite);
+                resultIntent.putExtra("resultDescription", description);
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }

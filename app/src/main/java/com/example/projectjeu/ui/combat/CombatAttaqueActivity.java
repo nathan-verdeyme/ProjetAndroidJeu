@@ -36,14 +36,6 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_combatattack);
 
-        retourButton = findViewById(R.id.retour);
-        retourButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CombatAttaqueActivity.this,CombatActivity.class);
-                startActivity(intent);
-            }
-        });
 
         vieUtilisateur = findViewById(R.id.vieUtilisateur);
         vieRandom = findViewById(R.id.vieRandom);
@@ -62,6 +54,12 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         String attaque2 = getIntent().getStringExtra("attaque2");
         int degats2 = getIntent().getIntExtra("degat2",0);
 
+        ItemCombat item = new ItemCombat(this);
+        boolean itemUsed = getIntent().getBooleanExtra("itemUsed", false);
+        item.setItemUsed(itemUsed);
+
+
+
         // Initialisation des combattants
         userCombattant = getCombattantUtilisateur();
         randomCombattant = getRandomCombattant(index,name, avatar, vie, attaque1, degats1, attaque2, degats2);
@@ -75,6 +73,16 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         updateUserHealthDisplay();
         updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
         updateAvatarDisplay(avatarRandom, avatar);
+
+        retourButton = findViewById(R.id.retour);
+        retourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CombatAttaqueActivity.this,CombatActivity.class);
+                intent.putExtra("itemUsed", item.isItemUsed());
+                startActivity(intent);
+            }
+        });
         attackButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +135,6 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     private void performRandomAttack() {
         int damage = randomCombattant.getRandomAttackDamage();
 
-        // Update user's health
         int vieActuel = userCombattant.getCombattantVie() - damage;
         userCombattant.setCombattantVie(Math.max(vieActuel, 0));
         checkEndOfCombat();
@@ -137,7 +144,8 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     private void endCombat(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
-        finish();}
+        finish();
+    }
     private void checkEndOfCombat() {
         if (userCombattant.getCombattantVie() <= 0) {
             endCombat("Vous avez perdu !");

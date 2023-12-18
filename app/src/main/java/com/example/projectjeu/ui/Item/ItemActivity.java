@@ -1,6 +1,7 @@
 package com.example.projectjeu.ui.Item;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,6 +80,9 @@ public class ItemActivity extends AppCompatActivity {
         if (requestCode == ITEM_DETAIL_REQUEST && resultCode == RESULT_OK) {
             String resultName = data.getStringExtra("resultName");
             int resultAvatarResId = data.getIntExtra("resultAvatar", R.drawable.ic_launcher_foreground);
+            String resultDescription = data.getStringExtra("resultDescription");
+            int resultEffet = data.getIntExtra("resultEffet",0);
+            int resultQuantite = data.getIntExtra("resultQuantite",0);
 
             TextView resultNameTextView = findViewById(R.id.resultName);
             ImageView resultAvatarImageView = findViewById(R.id.resultAvatar);
@@ -89,6 +93,18 @@ public class ItemActivity extends AppCompatActivity {
             // Assurez-vous que les vues pour afficher les résultats sont visibles
             resultNameTextView.setVisibility(View.VISIBLE);
             resultAvatarImageView.setVisibility(View.VISIBLE);
+
+            SharedPreferences sharedPref = getSharedPreferences("itemUtilisateur", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+
+            editor.putString("name", resultName);
+            editor.putInt("avatar",resultAvatarResId);
+            editor.putString("description",resultDescription);
+            editor.putInt("effet",resultEffet);
+            editor.putInt("quantite",resultQuantite);
+            editor.apply();
+
         }
     }
 

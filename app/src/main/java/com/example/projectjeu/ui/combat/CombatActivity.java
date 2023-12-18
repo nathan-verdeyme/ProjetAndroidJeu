@@ -2,10 +2,12 @@ package com.example.projectjeu.ui.combat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +33,7 @@ public class CombatActivity extends AppCompatActivity {
     private CombattantUtilisateur userCombattant;
     private CombattantRandom randomCombattant;
 
+    private ItemCombat itemUtilisateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class CombatActivity extends AppCompatActivity {
 
         userCombattant = getCombattantUtilisateur();
         randomCombattant = getRandomCombattant();
+        itemUtilisateur = getItemUtilisateur();
 
         updateUserHealthDisplay();
         updateRandomHealthDisplay();
@@ -64,10 +68,11 @@ public class CombatActivity extends AppCompatActivity {
                 intent.putExtra("avatarUtilisateur", userCombattant.getCombattantAvatarResId());
                 intent.putExtra("idRandom", randomCombattant.getId());
                 intent.putExtra("name",randomCombattant.getName());
-               intent.putExtra("attaque1", randomCombattant.getAttaque1());
-               intent.putExtra("degat1", randomCombattant.getDegats1());
+                intent.putExtra("attaque1", randomCombattant.getAttaque1());
+                intent.putExtra("degat1", randomCombattant.getDegats1());
                 intent.putExtra("attaque2", randomCombattant.getAttaque2());
                 intent.putExtra("degat2", randomCombattant.getDegats2());
+                intent.putExtra("itemUsed", itemUtilisateur.isItemUsed());
                 startActivity(intent);
             }
         });
@@ -82,14 +87,51 @@ public class CombatActivity extends AppCompatActivity {
         buttonItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CombatActivity.this, ItemActivity.class);
-                startActivity(intent);
+                utiliserItem();
             }
         });
     }
 
+    public void utiliserItem() {
+        if (!itemUtilisateur.isItemUsed()) {
+                if (itemUtilisateur.getEffetItem() < 0){
+                    int vieActuel = randomCombattant.getPointDeVie() + itemUtilisateur.getEffetItem();
+                    randomCombattant.setPointDeVie(Math.max(vieActuel, 0));
+                    Toast.makeText(this, "L'item "+itemUtilisateur.getNameItem()+" à affecter votre aversaire de "+itemUtilisateur.getEffetItem(), Toast.LENGTH_SHORT).show();
+                }else {
+                    int vieActuel = userCombattant.getCombattantVie() + itemUtilisateur.getEffetItem();
+                    userCombattant.setCombattantVie(Math.max(vieActuel, 0));
+                    Toast.makeText(this, "L'item "+itemUtilisateur.getNameItem()+" vous à rajouter "+itemUtilisateur.getEffetItem(), Toast.LENGTH_SHORT).show();
 
-    private void updateUserHealthDisplay() {
+                }
+            updateUserHealthDisplay();
+            updateRandomHealthDisplay();
+            checkEndOfCombat();
+            itemUtilisateur.setItemUsed(true);
+        } else {
+            Toast.makeText(this, "Cet item a déjà été utilisé dans ce combat.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void endCombat(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+
+        finish();}
+    private void checkEndOfCombat() {
+        if (userCombattant.getCombattantVie() <= 0) {
+            endCombat("Vous avez perdu !");
+        } else if (randomCombattant.getPointDeVie() <= 0) {
+            endCombat("Vous avez gagné !");
+        }
+        reinitialiserVieCombattants();
+    }
+    private void reinitialiserVieCombattants() {
+        userCombattant.setCombattantVie(userCombattant.getCombattantVie());
+
+        randomCombattant.setPointDeVie(randomCombattant.getPointDeVie());
+    }
+
+        private void updateUserHealthDisplay() {
         vieUtilisateur.setText("Vie: " + userCombattant.getCombattantVie());
     }
 
@@ -118,6 +160,17 @@ public class CombatActivity extends AppCompatActivity {
         combattantUtil.getCombattantVie();
 
         return combattantUtil;
+    }
+    private ItemCombat getItemUtilisateur(){
+        ItemCombat itemCombat = new ItemCombat(this);
+
+        itemCombat.getNameItem();
+        itemCombat.getDescriptionItem();
+        itemCombat.getAvatarItem();
+        itemCombat.getEffetItem();
+        itemCombat.getQuantiteItem();
+
+        return itemCombat;
     }
 
     private CombattantRandom getRandomCombattant() {
