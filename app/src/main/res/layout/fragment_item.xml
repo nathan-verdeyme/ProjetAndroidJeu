@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:text="Sélectionnez un Item"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,9 +72,10 @@
 
     <ListView
         android:id="@+id/ListView"
-        android:layout_width="299dp"
-        android:layout_height="301dp"
+        android:layout_width="337dp"
+        android:layout_height="363dp"
         android:layout_marginBottom="116dp"
+        android:cacheColorHint="#171616"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

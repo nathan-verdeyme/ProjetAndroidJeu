@@ -42,7 +42,8 @@ public class ItemListAdapter extends BaseAdapter {
 
         Item item = this.listData.get(position);
         holder.name.setText(item.getName());
-        holder.quantite.setText("Quantité " + String.valueOf(item.getQuantite()));
+        holder.quantite.setText("Quantité : " + String.valueOf(item.getQuantite()));
+        holder.quantite.setTextColor(Color.BLACK);
 
         String avatarName = item.getAvatar(); // Assurez-vous que ceci renvoie le nom de la ressource
         int resId = context.getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
@@ -54,10 +55,13 @@ public class ItemListAdapter extends BaseAdapter {
 
 
         if (position % 2 == 0) {
-            convertView.setBackgroundColor(Color.rgb(150, 245, 170));
+            convertView.setBackgroundColor(Color.rgb(150, 220, 170));
+            holder.name.setTextColor(Color.BLACK);
         } else {
             // Définir une autre couleur ou laisser transparent
-            convertView.setBackgroundColor(Color.TRANSPARENT);
+            //convertView.setBackgroundColor(Color.TRANSPARENT);
+            convertView.setBackgroundColor(Color.rgb(150, 220, 170));
+            holder.name.setTextColor(Color.BLACK);
         }
 
         return convertView;

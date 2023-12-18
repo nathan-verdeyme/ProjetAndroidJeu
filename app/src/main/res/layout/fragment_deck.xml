@@ -10,6 +10,8 @@
         android:id="@+id/imageView5"
         android:layout_width="804dp"
         android:layout_height="1335dp"
+        android:backgroundTint="#2CA4C3"
+        android:foregroundTint="#244EB8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -72,10 +74,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selectionnez un combattant"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/ListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultAvatar"
         app:layout_constraintVertical_bias="0.191" />
+
+    <TextView
+        android:id="@+id/monNiveau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="92dp"
+        android:text="Mon Niveau :"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#1C1B1B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="172dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="92dp"
+        android:background="#5E0707"
+        android:backgroundTint="#DD4545"
+        android:max="50"
+        android:progress="30"
+        android:progressBackgroundTint="#010113"
+        android:progressTint="#2C2A2A"
+        android:secondaryProgressTint="#FBFFFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/monNiveau" />
 </androidx.constraintlayout.widget.ConstraintLayout>
