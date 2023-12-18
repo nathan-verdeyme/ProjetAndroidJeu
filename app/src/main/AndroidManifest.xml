@@ -26,10 +26,6 @@
             android:exported="false"/>
         <activity android:name=".ui.combat.combatActivity"
             android:exported="false"/>
-        <activity android:name=".ui.Item.ItemActivity"
-            android:exported="false"/>
-        <activity android:name=".ui.Item.ItemDetailActivity"
-            android:exported="false"/>
 
 
 

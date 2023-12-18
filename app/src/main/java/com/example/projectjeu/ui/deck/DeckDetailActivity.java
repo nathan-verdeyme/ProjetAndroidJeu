@@ -21,16 +21,19 @@ public class DeckDetailActivity extends AppCompatActivity {
         int niveau = getIntent().getIntExtra("niveau", 0);
         int pointDeVie = getIntent().getIntExtra("pointDeVie",0);
         String attaqueDisponible = getIntent().getStringExtra("attaque");
+        int degat = getIntent().getIntExtra("degat",0);
 
         TextView nameTextView = findViewById(R.id.detailName);
         TextView niveauTextView = findViewById(R.id.detailNiveau);
         TextView pointDeVieTextView = findViewById(R.id.detailPointDeVie);
         TextView attaqueDisponibleTextView = findViewById(R.id.detailAttaque);
+        TextView degatTextView = findViewById(R.id.detailDegat);
 
         nameTextView.setText(name);
         niveauTextView.setText("niveau : " + String.valueOf(niveau));
         pointDeVieTextView.setText("Point de vie : " + String.valueOf(pointDeVie));
         attaqueDisponibleTextView.setText("Attaque 1 : " + String.valueOf(attaqueDisponible));
+        degatTextView.setText("Dégat : "+ String.valueOf(degat));
 
 
         int resId = getResources().getIdentifier(avatar, "drawable", getPackageName());
@@ -48,6 +51,9 @@ public class DeckDetailActivity extends AppCompatActivity {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("resultName", name);
                 resultIntent.putExtra("resultAvatar", resId);
+                resultIntent.putExtra("attaque", attaqueDisponible);
+                resultIntent.putExtra("pointDeVie", pointDeVie);
+                resultIntent.putExtra("degat", degat);
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }

@@ -146,4 +146,51 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
     }
+
+    public JSONObject getCombattantData(String combattantId) {
+        String token = Param.getInstance().getToken();
+        HttpURLConnection conn = null;
+        BufferedReader reader = null;
+
+        try {
+            URL url = new URL("https://api.munier.me/jwt/combattant/" + combattantId);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+
+
+            if (token != null) {
+                conn.setRequestProperty("Authorization", "Bearer " + URLEncoder.encode(token, "utf-8"));
+            }
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+
+                return new JSONObject(response.toString());
+            } else {
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les exceptions
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+        return null;
+    }
 }
