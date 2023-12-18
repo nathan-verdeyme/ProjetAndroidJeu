@@ -8,11 +8,11 @@
 
     <Button
         android:id="@+id/buttonDeck"
-        android:layout_width="229dp"
-        android:layout_height="135dp"
-        android:layout_marginTop="545dp"
+        android:layout_width="220dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="592dp"
         android:layout_marginEnd="-5dp"
-        android:backgroundTint="#FF9800"
+        android:backgroundTint="#009688"
         android:radius="0dp"
         android:text="DECK"
         android:textSize="24sp"
@@ -23,10 +23,10 @@
 
     <Button
         android:id="@+id/buttonCombat"
-        android:layout_width="223dp"
-        android:layout_height="135dp"
+        android:layout_width="221dp"
+        android:layout_height="153dp"
         android:layout_marginStart="-5dp"
-        android:layout_marginTop="545dp"
+        android:layout_marginTop="592dp"
         android:backgroundTint="#F44336"
         android:radius="0dp"
         android:text="COMBATTRE"
@@ -42,15 +42,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="50dp" />
+        app:layout_constraintGuide_begin="43dp" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="450dp"
-        android:layout_height="550dp"
+        android:layout_width="475dp"
+        android:layout_height="787dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDeck"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495"
         app:srcCompat="@drawable/_6000346f_f50c_4b10_88ba_80f56348033d_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,6 +42,7 @@ public class CombattantListAdapter extends BaseAdapter {
         Deck deck = this.listData.get(position);
         holder.name.setText(deck.getName());
         holder.niveau.setText("niveau " + String.valueOf(deck.getNiveau()));
+        holder.niveau.setTextColor(Color.BLACK);
 
         String avatarName = deck.getAvatar(); // Assurez-vous que ceci renvoie le nom de la ressource
         int resId = context.getResources().getIdentifier(avatarName, "drawable", context.getPackageName());
@@ -53,10 +54,15 @@ public class CombattantListAdapter extends BaseAdapter {
 
 
         if (position % 2 == 0) {
-            convertView.setBackgroundColor(Color.rgb(150, 245, 170));
+
+            convertView.setBackgroundColor(Color.rgb(150, 220, 170));
+            holder.name.setTextColor(Color.BLACK);
+
         } else {
             // Définir une autre couleur ou laisser transparent
-            convertView.setBackgroundColor(Color.TRANSPARENT);
+            convertView.setBackgroundColor(Color.rgb(150, 220, 170));
+            holder.name.setTextColor(Color.BLACK);
+
         }
 
         return convertView;
