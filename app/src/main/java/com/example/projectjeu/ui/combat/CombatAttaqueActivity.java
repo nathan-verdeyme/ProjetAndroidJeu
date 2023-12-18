@@ -1,5 +1,6 @@
 package com.example.projectjeu.ui.combat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,8 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         retourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(CombatAttaqueActivity.this,CombatActivity.class);
+                startActivity(intent);
             }
         });
 
