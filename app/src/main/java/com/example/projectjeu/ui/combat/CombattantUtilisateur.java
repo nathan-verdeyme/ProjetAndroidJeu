@@ -24,16 +24,23 @@ public class CombattantUtilisateur {
     }
 
 
-    public String getCombattantAttaque() {
-        return sharedPref.getString("combattantAttaque", null);
+    public String getCombattantAttaque1() {
+        return sharedPref.getString("attaque1", null);
+    }
+    public String getCombattantAttaque2() {
+        return sharedPref.getString("attaque2", null);
     }
 
     public int getCombattantVie() {
         return sharedPref.getInt("combattantVie", 0);
     }
 
-    public int getAttaqueDegat() {
-        return sharedPref.getInt("attaqueDegat", 0);
+    public int getAttaqueDegat1() {
+        return sharedPref.getInt("degat1", 0);
+    }
+
+    public int getAttaqueDegat2() {
+        return sharedPref.getInt("degat2", 0);
     }
 
     public void setCombattantVie(int vieActuel) {

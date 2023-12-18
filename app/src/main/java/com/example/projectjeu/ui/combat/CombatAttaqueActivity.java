@@ -1,7 +1,6 @@
 package com.example.projectjeu.ui.combat;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +14,6 @@ import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import com.example.projectjeu.ui.deck.Deck;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class CombatAttaqueActivity extends AppCompatActivity {
@@ -37,23 +35,38 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_combatattack);
 
+        retourButton = findViewById(R.id.retour);
+        retourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         vieUtilisateur = findViewById(R.id.vieUtilisateur);
         vieRandom = findViewById(R.id.vieRandom);
         avatarUtilisateur = findViewById(R.id.avatarUtilisateur);
         avatarRandom = findViewById(R.id.avatarRandom);
         attackButton1 = findViewById(R.id.button_attack1);
+        attackButton2 = findViewById(R.id.button_attack2);
+
+
         int index = getIntent().getIntExtra("idRandom", 0);
         String name = getIntent().getStringExtra("name");
         String avatar = getIntent().getStringExtra("avatarRandom");
         int vie = getIntent().getIntExtra("randomVie",0);
-        String attaque = getIntent().getStringExtra("attaque");
-        int degat = getIntent().getIntExtra("degats",0);
+        String attaque1 = getIntent().getStringExtra("attaque1");
+        int degats1 = getIntent().getIntExtra("degat1",0);
+        String attaque2 = getIntent().getStringExtra("attaque2");
+        int degats2 = getIntent().getIntExtra("degat2",0);
 
         // Initialisation des combattants
         userCombattant = getCombattantUtilisateur();
-        randomCombattant = getRandomCombattant(index,name, avatar, vie, attaque, degat);
-        String tag = "ey";
-        Log.v(tag, "essai val"+ randomCombattant.getId()+randomCombattant.getName());
+        randomCombattant = getRandomCombattant(index,name, avatar, vie, attaque1, degats1, attaque2, degats2);
+
+        attackButton1.setText(userCombattant.getCombattantAttaque1());
+        attackButton2.setText(userCombattant.getCombattantAttaque2());
+
         // Mise à jour des informations des combattants
         updateCombatantViews(userCombattant, randomCombattant);
         // Affichage des points de vie
@@ -63,19 +76,19 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         attackButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performAttack(userCombattant, randomCombattant, userCombattant.getAttaqueDegat());
+                performAttack(userCombattant, randomCombattant, userCombattant.getAttaqueDegat1());
                 performRandomAttack();
                 checkEndOfCombat();
             }
         });
-          /*attackButton2.setOnClickListener(new View.OnClickListener() {
+          attackButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performAttack(userCombattant, randomCombattant, userCombattant.getAttack2Damage());
+                performAttack(userCombattant, randomCombattant, userCombattant.getAttaqueDegat2());
                 performRandomAttack();
                 checkEndOfCombat();
             }
-        });*/
+        });
     }
 
     private void updateCombatantViews(CombattantUtilisateur userCombattant, CombattantRandom randomCombattant) {
@@ -110,7 +123,7 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     }
 
     private void performRandomAttack() {
-        int damage = randomCombattant.getDegats();
+        int damage = randomCombattant.getRandomAttackDamage();
 
         // Update user's health
         int vieActuel = userCombattant.getCombattantVie() - damage;
@@ -144,34 +157,19 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         CombattantUtilisateur combattantUtil = new CombattantUtilisateur(this);
 
         combattantUtil.getCombattantId();
-        combattantUtil.getCombattantAttaque();
+        combattantUtil.getCombattantAttaque1();
         combattantUtil.getCombattantAvatarResId();
-        combattantUtil.getAttaqueDegat();
+        combattantUtil.getAttaqueDegat1();
         combattantUtil.getCombattantVie();
+        combattantUtil.getCombattantAttaque2();
+        combattantUtil.getAttaqueDegat2();
 
         return combattantUtil;
     }
 
-    private CombattantRandom getRandomCombattant(int index, String name, String avatar, int vie, String attaque, int degat) {
+    private CombattantRandom getRandomCombattant(int index, String name, String avatar, int vie, String attaque1, int degat1, String attaque2, int degat2) {
         // Directement créer un CombattantRandom avec les paramètres fournis
-        CombattantRandom cr = new CombattantRandom(index, name, avatar, vie, attaque, degat);
+        CombattantRandom cr = new CombattantRandom(index, name, avatar, vie, attaque1, degat1,attaque2, degat2);
         return cr;
-    }
-
-
-    private ArrayList<Deck> getListData() {
-        try {
-            // Assuming you have a method for fetching and parsing JSON data in ConnectionRest
-            ConnectionRest connectionRest = new ConnectionRest();
-            connectionRest.execute("GET");
-            String listJsonObjs = connectionRest.get();
-
-            if (listJsonObjs != null) {
-                return connectionRest.parse(listJsonObjs);
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

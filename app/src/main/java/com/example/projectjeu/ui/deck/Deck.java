@@ -1,22 +1,16 @@
 package com.example.projectjeu.ui.deck;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.widget.ImageView;
-
 import org.json.JSONObject;
-
-import java.io.ByteArrayInputStream;
-import android.util.Base64;
 
 public class Deck {
     private final int id;
     private final String name;
     private final String avatar;
     private final int niveau;
-    private final String attaque;
-    private final int degat;
+    private final String attaque1;
+    private final int degat1;
+    private final String attaque2;
+    private final int degat2;
     private final int pointDeVie;
     private int vieActuel;
     public Deck(JSONObject jObject) {
@@ -24,9 +18,11 @@ public class Deck {
         this.name = jObject.optString("name");
         this.avatar = jObject.optString("avatar");
         this.niveau = jObject.optInt("niveau");
-        this.attaque = jObject.optString("attaque");
+        this.attaque1 = jObject.optString("attaque1");
+        this.attaque2 = jObject.optString("attaque2");
         this.pointDeVie = jObject.optInt("pointDeVie");
-        this.degat = jObject.optInt("degat");
+        this.degat1 = jObject.optInt("degat1");
+        this.degat2 = jObject.optInt("degat2");
         this.vieActuel = pointDeVie;
 
     }
@@ -35,7 +31,9 @@ public class Deck {
     public String getName() { return name; }
     public String getAvatar() { return avatar; }
     public int getNiveau() { return niveau; }
-    public String getAttaque() { return attaque; }
+    public String getAttaque1() { return attaque1; }
     public  int getPointDeVie() { return  pointDeVie; }
-    public int getDegat() { return degat; }
+    public int getDegat1() { return degat1; }
+    public int getDegat2() { return degat2; }
+    public String getAttaque2() { return attaque2; }
 }

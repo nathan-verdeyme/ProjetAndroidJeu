@@ -1,10 +1,8 @@
 package com.example.projectjeu.ui.deck;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -64,9 +62,11 @@ public class DeckActivity extends AppCompatActivity {
                 intent.putExtra("name", deck.getName());
                 intent.putExtra("avatar", deck.getAvatar());
                 intent.putExtra("niveau", deck.getNiveau());
-                intent.putExtra("attaque",deck.getAttaque());
+                intent.putExtra("attaque1",deck.getAttaque1());
+                intent.putExtra("attaque2",deck.getAttaque2());
                 intent.putExtra("pointDeVie",deck.getPointDeVie());
-                intent.putExtra("degat",deck.getDegat());
+                intent.putExtra("degat1",deck.getDegat1());
+                intent.putExtra("degat2",deck.getDegat2());
                 startActivityForResult(intent, DECK_DETAIL_REQUEST);
             }
         });
@@ -78,9 +78,11 @@ public class DeckActivity extends AppCompatActivity {
             String resultName = data.getStringExtra("resultName");
             int resultAvatarResId = data.getIntExtra("resultAvatar", R.drawable.ic_launcher_foreground);
             int combattantId = data.getIntExtra("id", -1);
-            String attaque = data.getStringExtra("attaque");
+            String attaque1 = data.getStringExtra("attaque1");
+            String attaque2 = data.getStringExtra("attaque2");
             int pointDeVie = data.getIntExtra("pointDeVie", 0);
-            int degat = data.getIntExtra("degat", 0);
+            int degat1 = data.getIntExtra("degat1", 0);
+            int degat2 = data.getIntExtra("degat2", 0);
 
 
 
@@ -100,9 +102,11 @@ public class DeckActivity extends AppCompatActivity {
             editor.putInt("combattantId", combattantId);
             editor.putString("combattantName", resultName);
             editor.putInt("combattantAvatarResId", resultAvatarResId);
-            editor.putString("combattantAttaque", attaque);
+            editor.putString("attaque1", attaque1);
+            editor.putString("attaque2", attaque2);
             editor.putInt("combattantVie", pointDeVie);
-            editor.putInt("attaqueDegat", degat);
+            editor.putInt("degat1", degat1);
+            editor.putInt("degat2", degat2);
             editor.apply();
         }
 

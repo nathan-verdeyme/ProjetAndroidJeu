@@ -10,8 +10,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectjeu.R;
+import com.example.projectjeu.ui.Item.ItemActivity;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import com.example.projectjeu.ui.deck.Deck;
+import com.example.projectjeu.ui.deck.DeckActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class CombatActivity extends AppCompatActivity {
     private TextView vieUtilisateur;
     private TextView vieRandom;
     private Button attackButton;
+    private Button buttonItem;
+    private Button buttonDeck;
     private CombattantUtilisateur userCombattant;
     private CombattantRandom randomCombattant;
 
@@ -39,7 +43,8 @@ public class CombatActivity extends AppCompatActivity {
         avatarUtilisateur= findViewById(R.id.avatarUtilisateur);
         avatarRandom = findViewById(R.id.avatarRandom);
         attackButton = findViewById(R.id.button_attack);
-
+        buttonItem = findViewById(R.id.button_item);
+        buttonDeck = findViewById(R.id.button_deck);
 
 
         userCombattant = getCombattantUtilisateur();
@@ -59,8 +64,25 @@ public class CombatActivity extends AppCompatActivity {
                 intent.putExtra("avatarUtilisateur", userCombattant.getCombattantAvatarResId());
                 intent.putExtra("idRandom", randomCombattant.getId());
                 intent.putExtra("name",randomCombattant.getName());
-               intent.putExtra("attaque", randomCombattant.getAttaque());
-               intent.putExtra("degats", randomCombattant.getDegats());
+               intent.putExtra("attaque1", randomCombattant.getAttaque1());
+               intent.putExtra("degat1", randomCombattant.getDegats1());
+                intent.putExtra("attaque2", randomCombattant.getAttaque2());
+                intent.putExtra("degat2", randomCombattant.getDegats2());
+                startActivity(intent);
+            }
+        });
+        buttonDeck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CombatActivity.this, DeckActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CombatActivity.this, ItemActivity.class);
                 startActivity(intent);
             }
         });
@@ -88,9 +110,11 @@ public class CombatActivity extends AppCompatActivity {
         CombattantUtilisateur combattantUtil = new CombattantUtilisateur(this);
 
         combattantUtil.getCombattantId();
-        combattantUtil.getCombattantAttaque();
+        combattantUtil.getCombattantAttaque1();
+        combattantUtil.getCombattantAttaque2();
         combattantUtil.getCombattantAvatarResId();
-        combattantUtil.getAttaqueDegat();
+        combattantUtil.getAttaqueDegat1();
+        combattantUtil.getAttaqueDegat2();
         combattantUtil.getCombattantVie();
 
         return combattantUtil;
@@ -111,8 +135,10 @@ public class CombatActivity extends AppCompatActivity {
                 randomCombattant.getName(),
                 randomCombattant.getAvatar(),
                 randomCombattant.getPointDeVie(),
-                randomCombattant.getAttaque(),
-                randomCombattant.getDegat()
+                randomCombattant.getAttaque1(),
+                randomCombattant.getDegat1(),
+                randomCombattant.getAttaque2(),
+                randomCombattant.getDegat2()
         );
 
         return cr;

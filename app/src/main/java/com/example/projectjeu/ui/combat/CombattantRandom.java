@@ -1,20 +1,25 @@
 package com.example.projectjeu.ui.combat;
 
+import java.util.Random;
+
 public class CombattantRandom {
     private int id;
     private String name;
     private String avatar;
     private int pointDeVie;
-    private String attaque;
-    private int degats;
-
-    public CombattantRandom(int id, String name, String avatar, int pointDeVie, String attaque, int degats) {
+    private String attaque1;
+    private int degats1;
+    private String attaque2;
+    private int degats2;
+    public CombattantRandom(int id, String name, String avatar, int pointDeVie, String attaque1, int degats1, String attaque2, int degats2) {
         this.id = id;
         this.name = name;
         this.avatar = avatar;
         this.pointDeVie = pointDeVie;
-        this.attaque = attaque;
-        this.degats = degats;
+        this.attaque1 = attaque1;
+        this.degats1 = degats1;
+        this.attaque2 = attaque2;
+        this.degats2 = degats2;
     }
 
     public CombattantRandom() {
@@ -37,12 +42,20 @@ public class CombattantRandom {
         return pointDeVie;
     }
 
-    public String getAttaque() {
-        return attaque;
+    public String getAttaque1() {
+        return attaque1;
     }
 
-    public int getDegats() {
-        return degats;
+    public int getDegats1() {
+        return degats1;
+    }
+
+    public String getAttaque2() {
+        return attaque2;
+    }
+
+    public int getDegats2() {
+        return degats2;
     }
 
     public void setId(int id) {
@@ -61,15 +74,25 @@ public class CombattantRandom {
         this.pointDeVie = pointDeVie;
     }
 
-    public void setAttaque(String attaque) {
-        this.attaque = attaque;
+    public void setAttaque1(String attaque1) {
+        this.attaque1 = attaque1;
     }
 
-    public void setDegats(int degats) {
-        this.degats = degats;
+    public void setDegats1(int degats1) {
+        this.degats1 = degats1;
+    }
+
+    public void setAttaque2(String attaque1) {
+        this.attaque1 = attaque1;
+    }
+
+    public void setDegats2(int degats1) {
+        this.degats1 = degats1;
     }
 
     public int getRandomAttackDamage() {
-        return getDegats();
+        Random random = new Random();
+        int randomNum = random.nextInt(2);
+        return randomNum == 0 ? getDegats1() : getDegats2();
     }
 }

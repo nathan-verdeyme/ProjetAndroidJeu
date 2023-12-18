@@ -29,14 +29,26 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/detailAttaque"
+        android:id="@+id/detailAttaque1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/detailDegat"
+        android:id="@+id/detailDegat1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/detailAttaque2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/detailDegat2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <Button
         android:id="@+id/selectionner"
