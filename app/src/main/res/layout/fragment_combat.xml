@@ -107,20 +107,20 @@
 
         <TextView
             android:id="@+id/vieRandom"
-            android:layout_width="102dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="84dp"
+            android:layout_width="61dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="96dp"
             android:background="#C33131"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintHorizontal_bias="0.128"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/vieUtilisateur"
-            android:layout_width="100dp"
-            android:layout_height="36dp"
+            android:layout_width="65dp"
+            android:layout_height="24dp"
             android:layout_marginTop="165dp"
             android:layout_marginBottom="547dp"
             android:background="#C33131"
@@ -128,7 +128,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintHorizontal_bias="0.884"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
