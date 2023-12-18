@@ -24,9 +24,14 @@
             android:exported="false"/>
         <activity android:name=".ui.login.RegistrationActivity"
             android:exported="false"/>
-        <activity android:name=".ui.combat.combatActivity"
+        <activity android:name=".ui.combat.CombatActivity"
             android:exported="false"/>
-
+        <activity android:name=".ui.combat.CombatAttaqueActivity"
+            android:exported="false"/>
+        <activity android:name=".ui.Item.ItemActivity"
+            android:exported="false"/>
+        <activity android:name=".ui.Item.ItemDetailActivity"
+            android:exported="false"/>
 
 
         <activity

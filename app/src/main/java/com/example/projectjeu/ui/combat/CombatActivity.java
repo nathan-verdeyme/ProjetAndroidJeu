@@ -45,10 +45,16 @@ public class CombatActivity extends AppCompatActivity {
 
         userCombattant = getCombattantUtilisateur();
         randomCombattant = getRandomCombattant();
+        String tag = "CombatActivity";
 
+        Log.d(tag, "USER: " + userCombattant.getCombattantVie()+userCombattant.getCombattantAttaque()+userCombattant.getCombattantAvatarResId()+userCombattant.getAttaqueDegat());
+
+        Log.d(tag, "random: " + randomCombattant.getPointsDeVie()+randomCombattant.getAttaque()+randomCombattant.getPointsDeVie()+randomCombattant.getAvatar()+randomCombattant.getDegats());
         // Affichage des points de vie
         updateUserHealthDisplay();
         updateRandomHealthDisplay();
+        updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
+        updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
         // Gestion des attaques
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,15 @@ public class CombatActivity extends AppCompatActivity {
 
     private void updateRandomHealthDisplay() {
         vieRandom.setText("Vie: " + randomCombattant.getPointsDeVie());
+    }
+    private void updateAvatarDisplay(ImageView imageView, String avatarResource) {
+
+        int imageResId = getResources().getIdentifier(avatarResource, "drawable", getPackageName());
+        imageView.setImageResource(imageResId);
+    }
+    private void updateAvatarDisplayUtilisateur(ImageView imageView, int avatarResource) {
+
+       imageView.setImageResource(avatarResource);
     }
 
     private CombattantUtilisateur getCombattantUtilisateur(){

@@ -38,19 +38,23 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_combatattack);
 
-        TextView vieUtilisateur = findViewById(R.id.vieUtilisateur);
-        TextView vieRandom = findViewById(R.id.vieRandom);
-        ImageView avatarUtilisateur= findViewById(R.id.avatarUtilisateur);
-        ImageView avatarRandom = findViewById(R.id.avatarRandom);
+        vieUtilisateur = findViewById(R.id.vieUtilisateur);
+        vieRandom = findViewById(R.id.vieRandom);
+        avatarUtilisateur = findViewById(R.id.avatarUtilisateur);
+        avatarRandom = findViewById(R.id.avatarRandom);
         attackButton1 = findViewById(R.id.button_attack1);
-        
-        updateCombatantViews(userCombattant, randomCombattant);
+
+        // Initialisation des combattants
         userCombattant = getCombattantUtilisateur();
         randomCombattant = getRandomCombattant();
 
+        // Mise à jour des informations des combattants
+        updateCombatantViews(userCombattant, randomCombattant);
         // Affichage des points de vie
         updateUserHealthDisplay();
         updateRandomHealthDisplay();
+        updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
+        updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
         attackButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,21 +74,22 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     }
 
     private void updateCombatantViews(CombattantUtilisateur userCombattant, CombattantRandom randomCombattant) {
-       int resId=  userCombattant.getCombattantAvatarResId();
-       String tag= "hey";
-        Log.v(tag,"avatar"+resId);
-            avatarUtilisateur.setImageResource(resId);
-        vieUtilisateur.setText(String.valueOf(userCombattant.getCombattantVie()));
-
-        int resId1 = getResources().getIdentifier(randomCombattant.getAvatar(), "drawable", getPackageName());
-        if (resId1 != 0 && avatarRandom != null) {
-            avatarRandom.setImageResource(resId1);
-        } else {
-            avatarRandom.setImageResource(R.mipmap.ic_launcher);
+        if (userCombattant != null && randomCombattant != null) {
+            vieUtilisateur.setText(String.valueOf(userCombattant.getCombattantVie()));
+            updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
+            updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
+            vieRandom.setText(String.valueOf(randomCombattant.getPointsDeVie()));
         }
-        vieRandom.setText(String.valueOf(randomCombattant.getPointsDeVie()));
     }
+    private void updateAvatarDisplay(ImageView imageView, String avatarResource) {
 
+        int imageResId = getResources().getIdentifier(avatarResource, "drawable", getPackageName());
+        imageView.setImageResource(imageResId);
+    }
+    private void updateAvatarDisplayUtilisateur(ImageView imageView, int avatarResource) {
+
+        imageView.setImageResource(avatarResource);
+    }
     private void reinitialiserVieCombattants() {
         userCombattant.setCombattantVie(userCombattant.getCombattantVie());
 

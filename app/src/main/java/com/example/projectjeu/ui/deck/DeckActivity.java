@@ -81,9 +81,7 @@ public class DeckActivity extends AppCompatActivity {
             String attaque = data.getStringExtra("attaque");
             int pointDeVie = data.getIntExtra("pointDeVie", 0);
             int degat = data.getIntExtra("degat", 0);
-            String tag = "CombatActivity";
 
-            Log.d(tag, "Avatar Resource ID: " + attaque);
 
 
 
