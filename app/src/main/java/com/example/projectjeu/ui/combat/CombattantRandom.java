@@ -1,26 +1,24 @@
 package com.example.projectjeu.ui.combat;
 
-import com.example.projectjeu.ui.connection_API.ConnectionRest;
-
-import org.json.JSONObject;
-
-import java.util.Random;
-
 public class CombattantRandom {
     private int id;
     private String name;
     private String avatar;
-    private int pointsDeVie;
+    private int pointDeVie;
     private String attaque;
     private int degats;
 
-    public CombattantRandom(int id, String name, String avatar, int pointsDeVie, String attaque, int degats) {
+    public CombattantRandom(int id, String name, String avatar, int pointDeVie, String attaque, int degats) {
         this.id = id;
         this.name = name;
         this.avatar = avatar;
-        this.pointsDeVie = pointsDeVie;
+        this.pointDeVie = pointDeVie;
         this.attaque = attaque;
         this.degats = degats;
+    }
+
+    public CombattantRandom() {
+
     }
 
     public int getId() {
@@ -35,8 +33,8 @@ public class CombattantRandom {
         return avatar;
     }
 
-    public int getPointsDeVie() {
-        return pointsDeVie;
+    public int getPointDeVie() {
+        return pointDeVie;
     }
 
     public String getAttaque() {
@@ -59,8 +57,8 @@ public class CombattantRandom {
         this.avatar = avatar;
     }
 
-    public void setPointsDeVie(int pointsDeVie) {
-        this.pointsDeVie = pointsDeVie;
+    public void setPointDeVie(int pointDeVie) {
+        this.pointDeVie = pointDeVie;
     }
 
     public void setAttaque(String attaque) {
@@ -72,23 +70,6 @@ public class CombattantRandom {
     }
 
     public int getRandomAttackDamage() {
-        return new Random().nextInt(degats);
-    }
-
-    public void choisirCombattantRandom() {
-        try {
-            JSONObject combattantData = new ConnectionRest().getCombattantData("");
-
-            if (combattantData != null) {
-                this.id = combattantData.optInt("id");
-                this.name = combattantData.optString("name");
-                this.avatar = combattantData.optString("avatar");
-                this.pointsDeVie = combattantData.optInt("pointsDeVie");
-                this.attaque = combattantData.optString("attaque");
-                this.degats = combattantData.optInt("degats");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return getDegats();
     }
 }

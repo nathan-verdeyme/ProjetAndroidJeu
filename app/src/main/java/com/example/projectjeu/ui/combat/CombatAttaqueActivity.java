@@ -16,7 +16,6 @@ import com.example.projectjeu.ui.deck.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class CombatAttaqueActivity extends AppCompatActivity {
@@ -43,18 +42,24 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         avatarUtilisateur = findViewById(R.id.avatarUtilisateur);
         avatarRandom = findViewById(R.id.avatarRandom);
         attackButton1 = findViewById(R.id.button_attack1);
+        int index = getIntent().getIntExtra("idRandom", 0);
+        String name = getIntent().getStringExtra("name");
+        String avatar = getIntent().getStringExtra("avatarRandom");
+        int vie = getIntent().getIntExtra("randomVie",0);
+        String attaque = getIntent().getStringExtra("attaque");
+        int degat = getIntent().getIntExtra("degats",0);
 
         // Initialisation des combattants
         userCombattant = getCombattantUtilisateur();
-        randomCombattant = getRandomCombattant();
-
+        randomCombattant = getRandomCombattant(index,name, avatar, vie, attaque, degat);
+        String tag = "ey";
+        Log.v(tag, "essai val"+ randomCombattant.getId()+randomCombattant.getName());
         // Mise à jour des informations des combattants
         updateCombatantViews(userCombattant, randomCombattant);
         // Affichage des points de vie
         updateUserHealthDisplay();
-        updateRandomHealthDisplay();
         updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
-        updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
+        updateAvatarDisplay(avatarRandom, avatar);
         attackButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +83,7 @@ public class CombatAttaqueActivity extends AppCompatActivity {
             vieUtilisateur.setText(String.valueOf(userCombattant.getCombattantVie()));
             updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
             updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
-            vieRandom.setText(String.valueOf(randomCombattant.getPointsDeVie()));
+            vieRandom.setText(String.valueOf(randomCombattant.getPointDeVie()));
         }
     }
     private void updateAvatarDisplay(ImageView imageView, String avatarResource) {
@@ -93,20 +98,19 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     private void reinitialiserVieCombattants() {
         userCombattant.setCombattantVie(userCombattant.getCombattantVie());
 
-        // Réinitialiser la vie du combattant random
-        randomCombattant.setPointsDeVie(randomCombattant.getPointsDeVie());
+        randomCombattant.setPointDeVie(randomCombattant.getPointDeVie());
     }
     private void performAttack(CombattantUtilisateur attacker, CombattantRandom defender, int damage) {
 
-        int vieActuel = defender.getPointsDeVie() - damage;
-        defender.setPointsDeVie(Math.max(vieActuel, 0));
+        int vieActuel = defender.getPointDeVie() - damage;
+        defender.setPointDeVie(Math.max(vieActuel, 0));
         checkEndOfCombat();
-        //updateUserHealthDisplay();
-        //updateRandomHealthDisplay();
+        updateUserHealthDisplay();
+        updateRandomHealthDisplay();
     }
 
     private void performRandomAttack() {
-        int damage = randomCombattant.getRandomAttackDamage();
+        int damage = randomCombattant.getDegats();
 
         // Update user's health
         int vieActuel = userCombattant.getCombattantVie() - damage;
@@ -122,7 +126,7 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     private void checkEndOfCombat() {
         if (userCombattant.getCombattantVie() <= 0) {
             endCombat("Vous avez perdu !");
-        } else if (randomCombattant.getPointsDeVie() <= 0) {
+        } else if (randomCombattant.getPointDeVie() <= 0) {
             endCombat("Vous avez gagné !");
         }
         reinitialiserVieCombattants();
@@ -133,11 +137,11 @@ public class CombatAttaqueActivity extends AppCompatActivity {
     }
 
     private void updateRandomHealthDisplay() {
-        vieRandom.setText("Vie: " + getRandomCombattant().getPointsDeVie());
+        vieRandom.setText("Vie: " + randomCombattant.getPointDeVie());
     }
 
     private CombattantUtilisateur getCombattantUtilisateur(){
-        CombattantUtilisateur combattantUtil = new CombattantUtilisateur(this); // Assurez-vous d'initialiser sharedPref dans le constructeur
+        CombattantUtilisateur combattantUtil = new CombattantUtilisateur(this);
 
         combattantUtil.getCombattantId();
         combattantUtil.getCombattantAttaque();
@@ -148,27 +152,12 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         return combattantUtil;
     }
 
-    private CombattantRandom getRandomCombattant() {
-        List<Deck> combattants = getListData();
-        if (combattants == null || combattants.isEmpty()) {
-            return null;
-        }
-
-        Random random = new Random();
-        int randomIndex = random.nextInt(combattants.size());
-        Deck randomCombattant = combattants.get(randomIndex);
-
-        CombattantRandom cr = new CombattantRandom(
-                randomCombattant.getId(),
-                randomCombattant.getName(),
-                randomCombattant.getAvatar(),
-                randomCombattant.getPointDeVie(),
-                randomCombattant.getAttaque(),
-                randomCombattant.getDegat()
-        );
-
+    private CombattantRandom getRandomCombattant(int index, String name, String avatar, int vie, String attaque, int degat) {
+        // Directement créer un CombattantRandom avec les paramètres fournis
+        CombattantRandom cr = new CombattantRandom(index, name, avatar, vie, attaque, degat);
         return cr;
     }
+
 
     private ArrayList<Deck> getListData() {
         try {
