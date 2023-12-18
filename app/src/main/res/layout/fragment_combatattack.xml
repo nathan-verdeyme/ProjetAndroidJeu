@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeActivity">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#8E0000"
         android:backgroundTint="#1F737E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".ui.home.HomeActivity">
+        tools:context=".ui.home.HomeActivity"
+        tools:layout_editor_absoluteX="-43dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="0dp"
@@ -26,7 +26,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <Button
             android:id="@+id/button_attack1"
@@ -70,24 +69,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_attack1" />
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.google.android.material.appbar.AppBarLayout>
+
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="462dp"
-            android:layout_height="283dp"
-            android:layout_marginTop="37dp"
+            android:layout_width="559dp"
+            android:layout_height="304dp"
+            android:layout_marginTop="24dp"
             android:src="@drawable/b84a3d9fe9aafdae5b370d50ed3a5779"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="462dp"
-            android:layout_height="69dp"
-            android:layout_marginTop="-15dp"
+            android:layout_width="410dp"
+            android:layout_height="wrap_content"
             android:background="#D30000"
             android:backgroundTint="#AFABAB"
-            android:text="Combat opposant x et y !                                                      Que le meilleur gagne !"
+            android:text="Que le meilleur gagne !                              Montre que tu as la meilleure stratégie"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#000000"
@@ -95,18 +105,17 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/vieUtilisateur"
-            android:layout_width="83dp"
-            android:layout_height="38dp"
+            android:layout_width="96dp"
+            android:layout_height="55dp"
             android:layout_marginTop="165dp"
             android:layout_marginBottom="547dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintHorizontal_bias="0.554"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -115,36 +124,35 @@
             android:id="@+id/avatarUtilisateur"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vieUtilisateur"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/vieRandom"
-            android:layout_width="93dp"
-            android:layout_height="26dp"
+            android:layout_width="113dp"
+            android:layout_height="54dp"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="662dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.361"
+            app:layout_constraintHorizontal_bias="0.389"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.13" />
 
         <ImageView
             android:id="@+id/avatarRandom"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.118"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vieRandom"
             tools:srcCompat="@tools:sample/avatars" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
