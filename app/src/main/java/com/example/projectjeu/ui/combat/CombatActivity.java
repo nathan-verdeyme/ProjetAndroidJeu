@@ -16,6 +16,7 @@ import com.example.projectjeu.ui.Item.ItemActivity;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import com.example.projectjeu.ui.deck.Deck;
 import com.example.projectjeu.ui.deck.DeckActivity;
+import com.example.projectjeu.ui.home.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class CombatActivity extends AppCompatActivity {
     private TextView vieRandom;
     private Button attackButton;
     private Button buttonItem;
-    private Button buttonDeck;
+    private Button buttonHome;
     private CombattantUtilisateur userCombattant;
     private CombattantRandom randomCombattant;
 
@@ -47,7 +48,7 @@ public class CombatActivity extends AppCompatActivity {
         avatarRandom = findViewById(R.id.avatarRandom);
         attackButton = findViewById(R.id.button_attack);
         buttonItem = findViewById(R.id.button_item);
-        buttonDeck = findViewById(R.id.button_deck);
+        buttonHome = findViewById(R.id.button_home);
 
 
         userCombattant = getCombattantUtilisateur();
@@ -76,10 +77,10 @@ public class CombatActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        buttonDeck.setOnClickListener(new View.OnClickListener() {
+        buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CombatActivity.this, DeckActivity.class);
+                Intent intent = new Intent(CombatActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

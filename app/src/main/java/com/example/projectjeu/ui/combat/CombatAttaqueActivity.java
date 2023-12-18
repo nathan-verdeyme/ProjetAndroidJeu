@@ -71,6 +71,7 @@ public class CombatAttaqueActivity extends AppCompatActivity {
         updateCombatantViews(userCombattant, randomCombattant);
         // Affichage des points de vie
         updateUserHealthDisplay();
+        updateRandomHealthDisplay();
         updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
         updateAvatarDisplay(avatarRandom, avatar);
 
