@@ -2,7 +2,6 @@ package com.example.projectjeu.ui.combat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,21 +44,23 @@ public class CombatActivity extends AppCompatActivity {
 
         userCombattant = getCombattantUtilisateur();
         randomCombattant = getRandomCombattant();
-        String tag = "CombatActivity";
 
-        Log.d(tag, "USER: " + userCombattant.getCombattantVie()+userCombattant.getCombattantAttaque()+userCombattant.getCombattantAvatarResId()+userCombattant.getAttaqueDegat());
-
-        Log.d(tag, "random: " + randomCombattant.getPointsDeVie()+randomCombattant.getAttaque()+randomCombattant.getPointsDeVie()+randomCombattant.getAvatar()+randomCombattant.getDegats());
-        // Affichage des points de vie
         updateUserHealthDisplay();
         updateRandomHealthDisplay();
         updateAvatarDisplayUtilisateur(avatarUtilisateur, userCombattant.getCombattantAvatarResId());
         updateAvatarDisplay(avatarRandom, randomCombattant.getAvatar());
-        // Gestion des attaques
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CombatActivity.this, CombatAttaqueActivity.class);
+                intent.putExtra("utilisateurvie", userCombattant.getCombattantVie());
+                intent.putExtra("randomVie",randomCombattant.getPointDeVie());
+                intent.putExtra("avatarRandom", randomCombattant.getAvatar());
+                intent.putExtra("avatarUtilisateur", userCombattant.getCombattantAvatarResId());
+                intent.putExtra("idRandom", randomCombattant.getId());
+                intent.putExtra("name",randomCombattant.getName());
+               intent.putExtra("attaque", randomCombattant.getAttaque());
+               intent.putExtra("degats", randomCombattant.getDegats());
                 startActivity(intent);
             }
         });
@@ -71,7 +72,7 @@ public class CombatActivity extends AppCompatActivity {
     }
 
     private void updateRandomHealthDisplay() {
-        vieRandom.setText("Vie: " + randomCombattant.getPointsDeVie());
+        vieRandom.setText("Vie: " + randomCombattant.getPointDeVie());
     }
     private void updateAvatarDisplay(ImageView imageView, String avatarResource) {
 

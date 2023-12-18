@@ -38,7 +38,4 @@ public class Deck {
     public String getAttaque() { return attaque; }
     public  int getPointDeVie() { return  pointDeVie; }
     public int getDegat() { return degat; }
-
-    public void setPointDeVie(int vieActuel) {
-    }
 }
