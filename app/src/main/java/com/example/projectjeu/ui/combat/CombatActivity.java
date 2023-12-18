@@ -2,7 +2,6 @@ package com.example.projectjeu.ui.combat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectjeu.R;
-import com.example.projectjeu.ui.Item.ItemActivity;
 import com.example.projectjeu.ui.connection_API.ConnectionRest;
 import com.example.projectjeu.ui.deck.Deck;
 import com.example.projectjeu.ui.deck.DeckActivity;
@@ -47,7 +45,7 @@ public class CombatActivity extends AppCompatActivity {
         avatarRandom = findViewById(R.id.avatarRandom);
         attackButton = findViewById(R.id.button_attack);
         buttonItem = findViewById(R.id.button_item);
-        buttonDeck = findViewById(R.id.button_deck);
+        buttonDeck = findViewById(R.id.button_home);
 
 
         userCombattant = getCombattantUtilisateur();
