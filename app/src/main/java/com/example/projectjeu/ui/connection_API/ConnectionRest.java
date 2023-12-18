@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.projectjeu.ui.Item.Item;
 import com.example.projectjeu.ui.deck.Deck;
 import com.example.projectjeu.ui.login.Param;
 import java.io.BufferedReader;
@@ -24,7 +25,16 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
     private final static String URL = "https://api.munier.me/jwt/";
     private JSONObject jsonObj = null;
 
-    private String action = "Combattant";
+    private String action = "Combattant" ;
+
+
+    /*public void setActionToItem() {
+        this.action = "Item";
+    }
+
+    //public void setActionToCombattant() {
+        this.action = "Combattant";
+    }*/
 
     @Override
     protected String doInBackground(String... strings) {
@@ -106,6 +116,20 @@ public class ConnectionRest extends AsyncTask<String, Void, String> {
                 Combattants.add(new Deck(jProductArray.optJSONObject(i)));
             }
             return Combattants;
+        } catch (JSONException e) {
+            Log.v("TAG","[JSONException] e : " + e.getMessage());
+        }
+        return null;
+    }
+
+   public ArrayList<Item> parse1(final String json) {
+        try {
+            final ArrayList<Item> Item = new ArrayList<>();
+            final JSONArray jProductArray = new JSONArray(json);
+            for (int i = 0; i < jProductArray.length(); i++) {
+                Item.add(new Item(jProductArray.optJSONObject(i)));
+            }
+            return Item;
         } catch (JSONException e) {
             Log.v("TAG","[JSONException] e : " + e.getMessage());
         }
