@@ -134,12 +134,10 @@
             android:id="@+id/vieRandom"
             android:layout_width="102dp"
             android:layout_height="39dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="288dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="276dp"
             android:background="#C33131"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/avatarRandom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -147,8 +145,8 @@
             android:id="@+id/avatarRandom"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="288dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="276dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vieRandom"
             tools:srcCompat="@tools:sample/avatars" />
