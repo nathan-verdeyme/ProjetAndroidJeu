@@ -41,7 +41,7 @@ public class CombattantListAdapter extends BaseAdapter {
 
         Deck deck = this.listData.get(position);
         holder.name.setText(deck.getName());
-        holder.niveau.setText(String.valueOf(deck.getNiveau()));
+        holder.niveau.setText("niveau " + String.valueOf(deck.getNiveau()));
 
         String avatarName = deck.getAvatar(); // Assurez-vous que ceci renvoie le nom de la ressource
         int resId = context.getResources().getIdentifier(avatarName, "drawable", context.getPackageName());

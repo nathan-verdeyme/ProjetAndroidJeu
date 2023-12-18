@@ -1,7 +1,10 @@
 package com.example.projectjeu.ui.deck;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -63,6 +66,7 @@ public class DeckActivity extends AppCompatActivity {
                 intent.putExtra("niveau", deck.getNiveau());
                 intent.putExtra("attaque",deck.getAttaque());
                 intent.putExtra("pointDeVie",deck.getPointDeVie());
+                intent.putExtra("degat",deck.getDegat());
                 startActivityForResult(intent, DECK_DETAIL_REQUEST);
             }
         });
@@ -73,6 +77,15 @@ public class DeckActivity extends AppCompatActivity {
         if (requestCode == DECK_DETAIL_REQUEST && resultCode == RESULT_OK) {
             String resultName = data.getStringExtra("resultName");
             int resultAvatarResId = data.getIntExtra("resultAvatar", R.drawable.ic_launcher_foreground);
+            int combattantId = data.getIntExtra("id", -1);
+            String attaque = data.getStringExtra("attaque");
+            int pointDeVie = data.getIntExtra("pointDeVie", 0);
+            int degat = data.getIntExtra("degat", 0);
+            String tag = "CombatActivity";
+
+            Log.d(tag, "Avatar Resource ID: " + attaque);
+
+
 
             TextView resultNameTextView = findViewById(R.id.resultName);
             ImageView resultAvatarImageView = findViewById(R.id.resultAvatar);
@@ -80,10 +93,22 @@ public class DeckActivity extends AppCompatActivity {
             resultNameTextView.setText(resultName);
             resultAvatarImageView.setImageResource(resultAvatarResId);
 
-            // Assurez-vous que les vues pour afficher les résultats sont visibles
             resultNameTextView.setVisibility(View.VISIBLE);
             resultAvatarImageView.setVisibility(View.VISIBLE);
+            SharedPreferences sharedPref = getSharedPreferences("combUtilisateur", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+
+            editor.putInt("combattantId", combattantId);
+            editor.putString("combattantName", resultName);
+            editor.putInt("combattantAvatarResId", resultAvatarResId);
+            editor.putString("combattantAttaque", attaque);
+            editor.putInt("combattantVie", pointDeVie);
+            editor.putInt("attaqueDegat", degat);
+            editor.apply();
         }
+
+
     }
 
     private ArrayList<Deck> getListData() {
